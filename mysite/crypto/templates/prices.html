@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% if notfound %}
+		<h3>{{ notfound }}</h3>
+	{% else %}
+		{% if crypto.Response %}
+			Sprry, {{ quote }} doesn't exist. Please, Try Again...
+		{% endif%}
+		{% for key, value in crypto.DISPLAY.items %}
+			<div class="jumbotron">
+			  	<h1 class="display-4"><stron>{{ key }}</stron></h1>
+				<strong>Price</strong>: {{ value.USD.PRICE }}<br/>
+				<strong>Dayli High</strong>: {{ value.USD.HIGHDAY }}<br/>
+				<strong>Dayily Low</strong>: {{ value.USD.LOWDAY }}<br/>
+				<strong>Market Cap</strong>: {{ value.USD.MKTCAP }}<br/>
+			</div>
+			<br/><br/>
+		{% endfor %} 
+	{% endif %}
+{% endblock %}
